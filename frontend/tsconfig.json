@@ -1,0 +1,15 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@/app/*": ["app/*"],
+      "@/components/*": ["components/*"],
+      "@/features/*": ["features/*"],
+      "@/pages/*": ["pages/*"]
+    },
+    "types": ["node"]
+  },
+  "include": ["src"]
+}
