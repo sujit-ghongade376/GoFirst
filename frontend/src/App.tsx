@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider, CssBaseline, Box, useMediaQuery } from '@mui/material';
+import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import { createTheme } from '@mui/material/styles';
 import Board from '@/features/board/Board';
 import Header from '@/components/Header';
