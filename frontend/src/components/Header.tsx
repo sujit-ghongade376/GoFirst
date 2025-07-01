@@ -18,7 +18,7 @@ const Header: React.FC = () => {
       <Toolbar>
         <AssignmentTurnedInIcon sx={{ mr: 1, fontSize: 32, color: 'secondary.main' }} />
         <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontWeight: 700, letterSpacing: 1 }}>
-          GoFirst
+          GoFirst Board
         </Typography>
         <IconButton color="inherit" onClick={colorMode.toggleColorMode} sx={{ mr: 1 }}>
           {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
