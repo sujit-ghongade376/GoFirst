@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api/';
+
 export interface Ticket {
   id: string | number;
   ticketNumber?: string;
@@ -40,7 +42,7 @@ export interface Attachment {
 
 export const ticketsApi = createApi({
   reducerPath: 'ticketsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8080/api/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: API_BASE_URL }),
   tagTypes: ['Ticket', 'Comment'],
   endpoints: (builder) => ({
     getTickets: builder.query<Ticket[], void>({
