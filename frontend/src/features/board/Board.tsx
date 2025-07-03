@@ -49,7 +49,8 @@ const Board = () => {
 
   const stageColors = getStageColors(theme.palette.mode);
 
-  const { data: tickets = [], isLoading, isError, refetch } = useGetTicketsQuery();
+  // Enable polling every 5 seconds for real-time updates
+  const { data: tickets = [], isLoading, isError, refetch } = useGetTicketsQuery(undefined, { pollingInterval: 5000 });
   const [createTicket] = useCreateTicketMutation();
   const [updateTicket] = useUpdateTicketMutation();
 
