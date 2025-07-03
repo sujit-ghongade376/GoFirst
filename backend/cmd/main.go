@@ -1,12 +1,14 @@
 package main
 
 import (
-	"log"
+	"gofirst-backend/internal/handlers"
 	"gofirst-backend/internal/models"
 	"gofirst-backend/internal/repository"
-	"gofirst-backend/internal/handlers"
-	"github.com/gin-gonic/gin"
+	"log"
+	"os"
+
 	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -35,6 +37,12 @@ func main() {
 
 	r := gin.Default()
 	r.Use(cors.Default())
+
+	// Root handler for health check or landing
+	r.GET("/", func(c *gin.Context) {
+		c.JSON(200, gin.H{"message": "GoFirst API is running"})
+	})
+
 	r.GET("/api/tickets", handler.GetTickets)
 	r.GET("/api/tickets/:id", handler.GetTicketByID)
 	r.POST("/api/tickets", handler.CreateTicket)
@@ -54,5 +62,9 @@ func main() {
 	r.GET("/api/tickets/:id/attachments", attachmentHandler.ListAttachments)
 	r.DELETE("/api/attachments/:attachmentId", attachmentHandler.DeleteAttachment)
 
-	r.Run(":8080")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run(":" + port)
 }
